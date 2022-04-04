@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <p class="h3 text-danger text-center">Products Items</p>
+                <p class="h3 text-danger text-center">Shopping Cart</p>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos, minima. Nulla error nam aut consectetur enim obcaecati, a culpa in officiis suscipit incidunt nihil pariatur non fugiat exercitationem odio eos!</p>
             </div>
         </div>
@@ -20,22 +20,27 @@
                             <th>Name</th>
                             <th>Price</th>
                             <th>Qty</th>
-                            <th>Total</th>
+                            <th>Total price</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr *ngFor="let product of products">
                             <td>{{ product.sno }}</td>
-                            <td><img [src]="product.image" alt="image" width="50" height="50"></td>
+                            <td><img [src]="product.image" alt="product image" width="70" height="70"></td>
                             <td>{{ product.name }}</td>
                             <td>{{ product.price }}</td>
                             <td>
-                                <i (click)="decrementQty()" class="fa fa-minus-square"></i>
+                                <i (click)="decrQty(product.sno)" class="fa fa-minus-square"></i>
                                 {{ product.qty }}
-                                <i (click)="incrementQty()" class="fa fa-plus-square"></i>
+                                <i (click)="incrQty(product.sno)"  class="fa fa-plus-square"></i>
                             </td>
-                            <td>{{ product.qty * product.price}}</td>
-                            
+                            <td>{{ product.qty * product.price }}</td>
+                        </tr> 
+                        <tr>
+                            <td colspan="4"></td>
+                            <td>Grand Total</td>
+                            <td>{{ calcGrandTotal() }}</td>
+                        </tr>  
                     </tbody>
                 </table>
             </div>
