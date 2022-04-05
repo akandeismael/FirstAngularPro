@@ -28,18 +28,18 @@
                             <td>{{ product.sno }}</td>
                             <td><img [src]="product.image" alt="product image" width="70" height="70"></td>
                             <td>{{ product.name }}</td>
-                            <td>{{ product.price }}</td>
+                            <td>{{ product.price |currency: 'EUR' }}</td>
                             <td>
                                 <i (click)="decrQty(product.sno)" class="fa fa-minus-square"></i>
                                 {{ product.qty }}
                                 <i (click)="incrQty(product.sno)"  class="fa fa-plus-square"></i>
                             </td>
-                            <td>{{ product.qty * product.price }}</td>
+                            <td>{{ product.qty * product.price |currency: 'EUR' }}</td>
                         </tr> 
                         <tr>
                             <td colspan="4"></td>
                             <td>Grand Total</td>
-                            <td>{{ calcGrandTotal() }}</td>
+                            <td>{{ calcGrandTotal() |currency: 'EUR' }}</td>
                         </tr>  
                     </tbody>
                 </table>
